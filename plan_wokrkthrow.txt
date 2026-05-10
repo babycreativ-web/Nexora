@@ -1,0 +1,327 @@
+Create a premium modern French landing page for a digital agency / AI-powered web studio called “Nexora Studio”.
+
+LANGUAGE:
+Everything must be written in professional French with a premium startup tone.
+
+STYLE:
+- Ultra moderne
+- Minimaliste mais premium
+- Esthétique dark/light moderne
+- Inspired by Linear, Stripe, Vercel, Framer and modern SaaS websites
+- Smooth animations and micro interactions
+- Startup premium feeling
+- Mobile-first responsive design
+- Glassmorphism effects
+- Elegant gradients
+- Professional typography
+- High-converting UI/UX
+
+MAIN GOAL:
+Generate qualified leads from French businesses and startups looking for:
+- sites web modernes
+- applications web
+- SaaS MVP
+- outils IA
+- landing pages
+- automatisations
+- dashboards
+- solutions digitales
+
+TARGET CLIENTS:
+- startups
+- PME
+- restaurants
+- agences
+- coachs
+- salons de beauté
+- immobilier
+- entrepreneurs
+
+WEBSITE STRUCTURE:
+
+==================================================
+1. NAVBAR
+==================================================
+
+Minimal sticky navbar with:
+- Logo
+- Accueil
+- Services
+- Projets
+- Tarifs
+- Contact
+
+CTA Button:
+“Réserver un appel”
+
+==================================================
+2. HERO SECTION
+==================================================
+
+Headline:
+“Sites Web & Applications IA Modernes Livrés Rapidement”
+
+Subheadline:
+“Nous créons des sites web, applications SaaS et expériences digitales premium pour les entreprises ambitieuses.”
+
+CTA Buttons:
+- Réserver un appel gratuit
+- Voir nos projets
+
+Add:
+- animated premium background
+- floating UI elements
+- startup-style dashboard mockups
+- glowing effects
+- trust indicators
+- subtle motion animations
+
+Add mini trust badges:
+- Livraison rapide
+- Design premium
+- Support international
+- Optimisé mobile
+
+==================================================
+3. SOCIAL PROOF
+==================================================
+
+Modern animated stats section:
+
+Examples:
+- 25+ projets réalisés
+- Réponse en moins de 24h
+- Clients internationaux
+- 98% satisfaction client
+
+Use modern counters and premium icons.
+
+==================================================
+4. SERVICES SECTION
+==================================================
+
+Beautiful animated cards with hover effects.
+
+Services:
+- Création de Sites Web
+- Landing Pages Haute Conversion
+- Développement SaaS
+- Intégration IA
+- Automatisation Business
+- Dashboards & Outils Internes
+- Optimisation Mobile
+- SEO & Performance
+
+Each card:
+- icon
+- short description
+- hover animation
+
+==================================================
+5. PRICING SECTION
+==================================================
+
+Create 3 premium pricing cards.
+
+--------------------------------
+PACK STARTER
+--------------------------------
+
+Price:
+“À partir de 399€”
+
+Include:
+- Site vitrine moderne
+- 1 à 3 pages
+- Responsive mobile
+- Formulaire de contact
+- Intégration WhatsApp
+- SEO basique
+- Livraison rapide
+
+CTA:
+“Commencer”
+
+--------------------------------
+PACK PROFESSIONAL
+--------------------------------
+
+Highlight this package as:
+“Le plus populaire”
+
+Price:
+“À partir de 899€”
+
+Include:
+- Jusqu’à 8 pages
+- Design premium
+- Animations modernes
+- SEO avancé
+- Optimisation performance
+- Système de réservation/contact
+- CMS intégré
+- Expérience utilisateur premium
+
+CTA:
+“Réserver un appel”
+
+--------------------------------
+PACK PREMIUM
+--------------------------------
+
+Price:
+“Sur devis”
+
+Include:
+- SaaS MVP
+- Applications web
+- Dashboards
+- Intégrations IA
+- Automatisations
+- Backend personnalisé
+- API & systèmes avancés
+- Support premium
+
+CTA:
+“Parler de votre projet”
+
+==================================================
+6. FEATURED PROJECTS
+==================================================
+
+Modern startup-style portfolio showcase.
+
+Projects examples:
+- Restaurant website
+- AI dashboard
+- Startup landing page
+- Beauty salon booking website
+- SaaS admin dashboard
+- Mobile app interface
+
+Each project should include:
+- category
+- short description
+- technologies used
+- result metrics
+
+Add:
+- hover animations
+- premium mockups
+- case-study style design
+
+==================================================
+7. WHY CHOOSE US
+==================================================
+
+Modern premium cards:
+
+- Livraison rapide
+- Design haut de gamme
+- Prix compétitifs
+- Workflow optimisé par IA
+- Technologies modernes
+- Support réactif
+
+==================================================
+8. PROCESS SECTION
+==================================================
+
+Animated timeline:
+
+1. Découverte
+2. Design
+3. Développement
+4. Livraison
+
+Modern minimalist layout.
+
+==================================================
+9. TESTIMONIALS
+==================================================
+
+Create believable French testimonials from:
+- startup founders
+- restaurant owners
+- business owners
+- entrepreneurs
+
+Include:
+- avatars
+- company names
+- premium layout
+
+==================================================
+10. FINAL CTA
+==================================================
+
+Headline:
+“Prêt à développer votre présence digitale ?”
+
+Subheadline:
+“Créons ensemble une expérience moderne qui attire plus de clients.”
+
+Buttons:
+- Démarrer un projet
+- Consultation gratuite
+
+==================================================
+11. FOOTER
+==================================================
+
+Modern premium footer with:
+- navigation
+- réseaux sociaux
+- email
+- WhatsApp
+- copyright
+- legal mentions
+
+==================================================
+TECH REQUIREMENTS
+==================================================
+
+- React + Tailwind
+- Framer Motion animations
+- Fully responsive
+- SEO optimized
+- Fast loading
+- Smooth scrolling
+- Sticky navbar
+- Elegant hover effects
+- Accessibility optimized
+- Premium startup quality
+
+==================================================
+DESIGN DETAILS
+==================================================
+
+- Rounded modern cards
+- Elegant shadows
+- Premium spacing
+- Clean typography hierarchy
+- Animated gradients
+- Glassmorphism effects
+- Apple/Vercel/Stripe inspired visuals
+- Modern icons
+- Subtle parallax
+- Cursor interactions
+- Animated background glow
+
+==================================================
+IMPORTANT
+==================================================
+
+The final result must feel:
+- elite
+- trustworthy
+- international
+- premium startup quality
+
+It must NOT look like:
+- a cheap freelancer website
+- a template
+- beginner work
+
+The website should feel like a high-end digital studio worth €50k+.
+
