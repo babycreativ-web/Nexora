@@ -4,8 +4,8 @@ import { ExternalLink, BarChart, Users, CheckCircle, Star } from "lucide-react";
 const projects = [
   {
     title: "Restaurant Le Comptoir",
-    category: "Site Vitrine / Réservation",
-    image: "/saas_dashboard_mockup.png",
+    category: "App de Réservation",
+    image: "/restaurant_demo.png",
     problem: "Pas de visibilité en ligne, réservations uniquement par téléphone.",
     solution: "Site vitrine premium avec système de réservation intégré et menu digital.",
     result: "+120% de réservations en ligne",
@@ -13,12 +13,12 @@ const projects = [
       { label: "Réservations", value: "+120%", icon: BarChart },
       { label: "Clients", value: "850+", icon: Users }
     ],
-    tags: ["Site Vitrine", "Réservation", "Restaurant"]
+    tags: ["Booking App", "Restaurant", "SaaS"]
   },
   {
     title: "Cabinet Juridique Moreau",
-    category: "Application Métier",
-    image: "/ai_interface_mockup.png",
+    category: "Logiciel CRM Métier",
+    image: "/legal_demo.png",
     problem: "Gestion de dossiers clients chronophage et désorganisée.",
     solution: "Application web sur mesure avec CRM intégré, suivi automatique et facturation.",
     result: "15h gagnées par semaine",
@@ -26,12 +26,12 @@ const projects = [
       { label: "Gain de temps", value: "15h/sem", icon: BarChart },
       { label: "Dossiers", value: "300+", icon: CheckCircle }
     ],
-    tags: ["Application Web", "CRM", "Juridique"]
+    tags: ["CRM Custom", "Juridique", "Efficacité"]
   },
   {
     title: "Clinique Santé Plus",
-    category: "IA & Automatisation",
-    image: "/agency_landing_mockup.png",
+    category: "SaaS Santé & IA",
+    image: "/health_demo.png",
     problem: "Secrétariat médical surchargé, patients insatisfaits de l'attente.",
     solution: "Chatbot IA pour prise de RDV, rappels automatiques et formulaires pré-consultation.",
     result: "Temps d'attente réduit de 60%",
@@ -39,7 +39,7 @@ const projects = [
       { label: "Satisfaction", value: "97%", icon: Star },
       { label: "Automatisation", value: "80%", icon: CheckCircle }
     ],
-    tags: ["IA", "Chatbot", "Santé"]
+    tags: ["IA Health", "SaaS", "Medical"]
   }
 ];
 
@@ -84,7 +84,7 @@ const Portfolio = () => {
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 opacity-50 sm:opacity-60 group-hover:opacity-80 grayscale-[20%] group-hover:grayscale-0"
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 opacity-[0.85] group-hover:opacity-100 grayscale-[10%] group-hover:grayscale-0"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/20 to-transparent" />
