@@ -12,6 +12,7 @@ import Pricing from "./components/Pricing";
 import Testimonials from "./components/Testimonials";
 import Verification from "./components/Verification";
 import About from "./components/About";
+import TrustStrip from "./components/TrustStrip";
 import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
 import ContactButtons from "./components/ContactButtons";
@@ -75,14 +76,15 @@ function App() {
               Gratuit, sans engagement — vous ne payez que si le résultat vous convainc.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a href="#contact" className="btn-primary py-5 px-10 text-base font-bold flex items-center gap-3 group shadow-[0_0_50px_rgba(139,92,246,0.25)]">
-                <Sparkles className="w-5 h-5" />
-                Demander un prototype gratuit
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              <a href="#contact" className="btn-primary min-w-[280px]">
+                🚀 Demander un prototype gratuit
+                <ArrowRight className="lucide-arrow-right" />
               </a>
             </div>
           </motion.div>
         </section>
+
+        <TrustStrip />
       </main>
       <Footer />
       <ContactButtons />
