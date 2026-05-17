@@ -1,33 +1,46 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
-import { ArrowRight, Shield, Sparkles, Clock, Cpu, MousePointer } from "lucide-react";
+import { ArrowRight, Sparkles, MousePointer, Check } from "lucide-react";
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Text Split Reveal
+      const titles = document.querySelectorAll(".hero-title-reveal");
+      titles.forEach(title => {
+        gsap.from(title, {
+          y: 60,
+          opacity: 0,
+          duration: 1,
+          ease: "power4.out",
+          stagger: 0.1,
+        });
+      });
+
       gsap.from(".hero-reveal", {
-        y: 80,
+        y: 40,
         opacity: 0,
-        duration: 1.2,
-        stagger: 0.15,
-        ease: "power4.out",
+        duration: 1,
+        stagger: 0.1,
+        ease: "power3.out",
+        delay: 0.3
       });
 
       gsap.to(".hero-orb-1", {
-        y: "random(-30, 30)",
-        x: "random(-30, 30)",
-        duration: 8,
+        y: "random(-40, 40)",
+        x: "random(-40, 40)",
+        duration: 12,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
       });
       gsap.to(".hero-orb-2", {
-        y: "random(-20, 20)",
-        x: "random(-20, 20)",
-        duration: 10,
+        y: "random(-30, 30)",
+        x: "random(-30, 30)",
+        duration: 15,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
@@ -40,74 +53,71 @@ const Hero = () => {
   return (
     <section ref={containerRef} id="hero" className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden min-h-[100vh] flex items-center">
       {/* Ambient orbs */}
-      <div className="hero-orb-1 glow-mesh top-[-10%] -left-32 w-[700px] h-[700px] bg-brand-violet/30" />
-      <div className="hero-orb-2 glow-mesh bottom-[-20%] -right-32 w-[500px] h-[500px] bg-brand-cyan/15" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-brand-indigo/5 blur-[200px] rounded-full pointer-events-none" />
+      <div className="hero-orb-1 glow-mesh top-[-10%] -left-32 w-[700px] h-[700px] bg-brand-violet/20" />
+      <div className="hero-orb-2 glow-mesh bottom-[-20%] -right-32 w-[500px] h-[500px] bg-brand-cyan/10" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-brand-indigo/[0.03] blur-[200px] rounded-full pointer-events-none" />
       
       {/* Subtle grid pattern */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-        backgroundSize: '60px 60px'
+      <div className="absolute inset-0 opacity-[0.02]" style={{
+        backgroundImage: `linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)`,
+        backgroundSize: '80px 80px'
       }} />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
         <div className="flex flex-col items-center text-center">
           <motion.div 
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="hero-reveal section-label"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="hero-reveal mb-8"
           >
-            <Shield className="w-3.5 h-3.5" />
-            <span>Testez votre prototype avant de payer</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-violet/10 border border-brand-violet/20 text-[10px] font-bold text-brand-violet uppercase tracking-widest animate-pulse">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-violet" />
+              4 nouveaux prototypes lancés cette semaine
+            </div>
           </motion.div>
 
-          <h1 className="hero-reveal font-display text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5rem] xl:text-[5.5rem] font-bold tracking-tight mb-8 leading-[1.08] max-w-5xl">
+          <h1 className="hero-title-reveal font-display text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-bold tracking-tight mb-8 leading-[1.05] max-w-5xl">
             Votre business mérite{" "}
-            <span className="text-gradient">une présence digitale</span>{" "}
-            qui travaille pour vous
+            <span className="text-gradient">une présence</span>{" "}
+            qui domine le marché
           </h1>
 
-          <p className="hero-reveal text-base sm:text-lg md:text-xl text-slate-400 max-w-3xl mb-10 leading-relaxed">
-            Sites web, applications métier, automatisation et solutions IA — conçus sur mesure pour les PME en France et en Belgique. 
-            Gagnez du temps, automatisez votre activité et impressionnez vos clients dès le premier clic.
+          <p className="hero-reveal text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl mb-12 leading-relaxed">
+            Ne vous contentez pas d'un simple site web. Nous créons des outils de conversion massifs en France et en Belgique. 
+            <span className="text-white font-medium ml-1">Testez notre vision gratuitement en 48h.</span>
           </p>
 
-          <div className="hero-reveal flex flex-col sm:flex-row gap-4 mb-16 items-center">
-            <button className="btn-primary flex items-center gap-3 group text-base sm:text-lg px-8 sm:px-10 py-4 sm:py-5 shadow-[0_0_50px_rgba(139,92,246,0.25)]">
-              <Sparkles className="w-5 h-5" />
-              Demander un prototype gratuit
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </button>
-            <button className="btn-secondary flex items-center gap-2 px-8 py-4 sm:py-5 text-sm sm:text-base">
-              <MousePointer className="w-4 h-4 text-brand-violet" />
-              Voir nos réalisations
-            </button>
+          <div className="hero-reveal flex flex-col items-center gap-6 mb-20">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button className="btn-primary group border-white/10">
+                <Sparkles className="w-5 h-5 text-amber-300" />
+                Demander un prototype gratuit
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </button>
+              <button className="btn-secondary group">
+                <MousePointer className="w-4 h-4 text-brand-violet" />
+                Voir nos réalisations
+              </button>
+            </div>
+            <div className="flex items-center gap-6 text-[10px] uppercase tracking-[0.15em] font-bold text-slate-500">
+              <span className="flex items-center gap-2"><Check className="w-3 h-3 text-brand-emerald" /> Sans engagement</span>
+              <span className="flex items-center gap-2"><Check className="w-3 h-3 text-brand-emerald" /> Réponse sous 24h</span>
+              <span className="flex items-center gap-2"><Check className="w-3 h-3 text-brand-emerald" /> 100% sur mesure</span>
+            </div>
           </div>
 
-          {/* Trust badges row */}
-          <div className="hero-reveal grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full max-w-4xl">
-            {[
-              { icon: Shield, text: "Prototype gratuit", sub: "avant paiement" },
-              { icon: Clock, text: "Livraison rapide", sub: "2 à 5 jours" },
-              { icon: Cpu, text: "Technologie IA", sub: "sur mesure" },
-              { icon: Sparkles, text: "Design premium", sub: "moderne & pro" },
-            ].map((badge) => (
-              <motion.div
-                key={badge.text}
-                whileHover={{ y: -3, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 400 }}
-                className="flex items-center gap-3 p-3 sm:p-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-brand-violet/20 transition-all"
-              >
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-violet/10 flex items-center justify-center shrink-0">
-                  <badge.icon className="w-4 h-4 sm:w-5 sm:h-5 text-brand-violet" />
-                </div>
-                <div className="text-left">
-                  <div className="text-xs sm:text-sm font-bold text-white leading-tight">{badge.text}</div>
-                  <div className="text-[10px] sm:text-xs text-slate-500">{badge.sub}</div>
-                </div>
-              </motion.div>
-            ))}
+          {/* Tech stack authority bar */}
+          <div className="hero-reveal w-full max-w-4xl pt-10 border-t border-white/[0.04]">
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-600 mb-8 items-center justify-center flex gap-3">
+              <span className="h-px w-8 bg-white/5" />
+              Technologies de pointe
+              <span className="h-px w-8 bg-white/5" />
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+              {['React', 'Next.js', 'Vercel', 'Supabase', 'Stripe', 'Node.js'].map(tech => (
+                <span key={tech} className="font-display font-bold text-sm tracking-tighter text-white">{tech}</span>
+              ))}
+            </div>
           </div>
         </div>
       </div>

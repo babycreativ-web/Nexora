@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Calendar, X, Sparkles } from "lucide-react";
+import { MessageCircle, Calendar, X, Sparkles, Check } from "lucide-react";
 import { useState } from "react";
 
 const ContactButtons = () => {
@@ -41,67 +41,95 @@ const ContactButtons = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[200] bg-obsidian/90 backdrop-blur-xl flex items-center justify-center p-4 md:p-6"
+            className="fixed inset-0 z-[200] bg-obsidian/95 backdrop-blur-2xl flex items-center justify-center p-4 md:p-6"
             onClick={(e) => e.target === e.currentTarget && setShowCalendly(false)}
           >
             <motion.div 
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ type: "spring", damping: 25 }}
-              className="relative w-full max-w-lg bg-obsidian-light border border-white/10 rounded-3xl overflow-hidden shadow-2xl"
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              className="relative w-full max-w-xl bg-obsidian-light border border-white/10 rounded-[2.5rem] overflow-hidden shadow-2xl"
             >
               <button 
                 onClick={() => setShowCalendly(false)}
-                className="absolute top-4 right-4 w-9 h-9 bg-white/5 hover:bg-white/10 rounded-full flex items-center justify-center text-slate-400 hover:text-white z-10 transition-all"
+                className="absolute top-6 right-6 w-10 h-10 bg-white/5 hover:bg-white/10 rounded-full flex items-center justify-center text-slate-400 hover:text-white z-10 transition-all"
                 aria-label="Fermer"
               >
-                <X className="w-4 h-4" />
+                <X className="w-5 h-5" />
               </button>
               
-              <div className="p-8 md:p-10 text-center">
-                <div className="w-16 h-16 rounded-2xl bg-brand-violet/15 flex items-center justify-center mx-auto mb-6">
-                  <Calendar className="w-8 h-8 text-brand-violet" />
+              <div className="p-8 md:p-12">
+                <div className="text-center mb-10">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-violet/10 border border-brand-violet/20 text-[10px] font-bold text-brand-violet uppercase tracking-[0.2em] mb-6">
+                    <Sparkles className="w-3 h-3" />
+                    Zéro risque . 100% Gratuit
+                  </div>
+                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-display tracking-tight leading-tight">
+                    Votre prototype <br/><span className="text-gradient">prêt sous 48h</span>
+                  </h3>
+                  <p className="text-slate-400 text-sm max-w-sm mx-auto leading-relaxed">
+                    Décrivez votre besoin. Nous créons la base de votre futur outil. Testez avant de payer.
+                  </p>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 font-display">
-                  Demandez votre prototype gratuit
-                </h3>
-                <p className="text-slate-400 mb-8 max-w-sm mx-auto text-sm leading-relaxed">
-                  Décrivez votre projet et nous créons un prototype fonctionnel que vous pourrez tester avant tout engagement.
-                </p>
                 
-                <div className="space-y-4 text-left">
-                  <div>
-                    <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5 block">Votre nom</label>
-                    <input 
-                      type="text" 
-                      placeholder="Jean Dupont"
-                      className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-brand-violet/40 transition-colors"
-                    />
+                {/* Process Steps inside Modal */}
+                <div className="grid grid-cols-3 gap-2 mb-10">
+                  {[
+                    { l: "Réception", d: "Sous 2h" },
+                    { l: "Prototype", d: "48h max" },
+                    { l: "Validation", d: "Par vous" }
+                  ].map((step, i) => (
+                    <div key={i} className="text-center">
+                      <div className="h-1 bg-white/5 rounded-full mb-3 overflow-hidden">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          animate={{ width: "100%" }}
+                          transition={{ delay: 0.5 + i * 0.2 }}
+                          className="h-full bg-brand-violet/40"
+                        />
+                      </div>
+                      <div className="text-[9px] font-bold text-white uppercase tracking-wider mb-1">{step.l}</div>
+                      <div className="text-[9px] text-slate-600 uppercase font-medium">{step.d}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                    <div>
+                      <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5 block ml-1">Nom Complet</label>
+                      <input 
+                        type="text" 
+                        placeholder="Jean Dupont"
+                        className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 text-white text-sm focus:outline-none focus:border-brand-violet/40 transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5 block ml-1">Email Pro</label>
+                      <input 
+                        type="email" 
+                        placeholder="jean@entreprise.fr"
+                        className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 text-white text-sm focus:outline-none focus:border-brand-violet/40 transition-all"
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5 block">Email</label>
-                    <input 
-                      type="email" 
-                      placeholder="jean@monentreprise.fr"
-                      className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-brand-violet/40 transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5 block">Décrivez votre projet</label>
+                  <div className="text-left">
+                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5 block ml-1">Décrivez votre besoin (Métier, Objectifs...)</label>
                     <textarea 
                       rows={3}
-                      placeholder="Je cherche un site web pour mon restaurant à Lyon..."
-                      className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-brand-violet/40 transition-colors resize-none"
+                      placeholder="Ex: Restaurant à Bruxelles, besoin d'un système de commande..."
+                      className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 text-white text-sm focus:outline-none focus:border-brand-violet/40 transition-all resize-none"
                     />
                   </div>
-                  <button className="btn-primary w-full py-4 font-bold text-sm mt-2">
-                    Envoyer ma demande
+                  <button className="btn-primary w-full py-5 text-base shadow-[0_0_50px_rgba(139,92,246,0.2)] mt-4">
+                    Demander mon prototype gratuit
                   </button>
-                </div>
+                </form>
                 
-                <p className="text-[10px] text-slate-600 mt-4">
-                  Réponse sous 24h • Sans engagement • 100% gratuit
+                <p className="text-[10px] font-medium text-slate-500 mt-8 text-center flex items-center justify-center gap-4">
+                  <span className="flex items-center gap-1.5"><Check className="w-3 h-3 text-brand-emerald" /> Sans engagement</span>
+                  <span className="flex items-center gap-1.5"><Check className="w-3 h-3 text-brand-emerald" /> RGPD Compliant</span>
+                  <span className="flex items-center gap-1.5"><Check className="w-3 h-3 text-brand-emerald" /> 100% Gratuit</span>
                 </p>
               </div>
             </motion.div>

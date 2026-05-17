@@ -10,43 +10,43 @@ import {
 
 const services = [
   {
-    title: "Sites Web Sur Mesure",
-    description: "Sites vitrines et e-commerce modernes, rapides et optimisés pour convertir vos visiteurs en clients. Parfaits pour restaurants, cabinets, commerces et indépendants.",
+    title: "Capture de Prospects",
+    description: "Sites vitrines et e-commerce conçus comme des machines à convertir. Nous optimisons chaque pixel pour transformer vos visiteurs en clients fidèles.",
     icon: Globe,
     gradient: "from-violet-500/20 to-indigo-500/20",
     border: "hover:border-violet-500/25"
   },
   {
-    title: "Applications Web (SaaS)",
-    description: "Applications métier complètes avec tableau de bord, réservation en ligne et gestion clients. Vos processus automatisés, accessibles partout.",
+    title: "Efficacité Opérationnelle",
+    description: "Applications web métier (SaaS) sur mesure pour centraliser votre activité. Gérez vos réservations, vos clients et vos stocks en temps réel.",
     icon: Smartphone,
     gradient: "from-cyan-500/20 to-blue-500/20",
     border: "hover:border-cyan-500/25"
   },
   {
-    title: "Applications Desktop",
-    description: "Logiciels de bureau performants pour la gestion commerciale, caisse enregistreuse, inventaire ou facturation. Solides et adaptés à votre métier.",
+    title: "Outils de Gestion Locaux",
+    description: "Logiciels desktop robustes (Windows/Mac) pour points de vente, caisses enregistreuses et inventaires complexes. Performance sans compromis.",
     icon: Monitor,
     gradient: "from-emerald-500/20 to-teal-500/20",
     border: "hover:border-emerald-500/25"
   },
   {
-    title: "Solutions IA Métier",
-    description: "Chatbots intelligents, assistants virtuels et agents IA qui répondent à vos clients, trient vos emails et optimisent votre prise de décision.",
+    title: "Intelligence Augmentée",
+    description: "Agents IA entraînés sur vos données pour automatiser votre support client 24/7 et trier vos flux d'informations critiques instantanément.",
     icon: Bot,
     gradient: "from-pink-500/20 to-rose-500/20",
     border: "hover:border-pink-500/25"
   },
   {
-    title: "Automatisation & Workflows",
-    description: "Éliminez les tâches répétitives : facturation automatique, relances clients, synchronisation de données et reporting en temps réel.",
+    title: "Automatisation Totale",
+    description: "Éliminez 90% de vos tâches manuelles répétitives. Nous connectons vos outils pour automatiser facturation, relances et workflows.",
     icon: Workflow,
     gradient: "from-amber-500/20 to-orange-500/20",
     border: "hover:border-amber-500/25"
   },
   {
-    title: "Tableaux de Bord Décisionnels",
-    description: "Visualisez vos indicateurs clés en un coup d'œil. Suivez vos ventes, vos performances et prenez des décisions éclairées instantanément.",
+    title: "Pilotage Stratégique",
+    description: "Tableaux de bord interactifs (Analytics) pour visualiser vos indicateurs clés. Prenez des décisions basées sur des données réelles, pas sur l'intuition.",
     icon: BarChart4,
     gradient: "from-indigo-500/20 to-purple-500/20",
     border: "hover:border-indigo-500/25"
@@ -54,8 +54,19 @@ const services = [
 ];
 
 const Services = () => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const cards = document.querySelectorAll(".glow-card");
+    cards.forEach((card) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      (card as HTMLElement).style.setProperty("--mouse-x", `${x}px`);
+      (card as HTMLElement).style.setProperty("--mouse-y", `${y}px`);
+    });
+  };
+
   return (
-    <section id="services" className="py-20 md:py-28 relative">
+    <section id="services" className="py-20 md:py-28 relative overflow-hidden" onMouseMove={handleMouseMove}>
       <div className="absolute inset-0 bg-gradient-to-b from-obsidian via-obsidian-light/30 to-obsidian pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -67,14 +78,14 @@ const Services = () => {
           className="flex flex-col items-center text-center mb-16 md:mb-20"
         >
           <div className="section-label">
-            <span>Nos Services</span>
+            <span>Maximisez vos Revenus</span>
           </div>
           <h2 className="section-title max-w-4xl">
-            Tout ce dont votre entreprise a besoin pour{" "}
-            <span className="text-gradient">se digitaliser</span>
+            Des outils de pointe pour{" "}
+            <span className="text-gradient">transformer votre business</span>
           </h2>
           <p className="text-slate-400 max-w-2xl text-base md:text-lg leading-relaxed">
-            De la vitrine en ligne à l'application métier complexe, nous concevons des outils digitaux qui génèrent des résultats concrets pour votre activité.
+            Nous ne vendons pas du code. Nous installons des systèmes de croissance robustes, sécurisés et 100% automatisés.
           </p>
         </motion.div>
 
@@ -86,8 +97,7 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.08, duration: 0.5 }}
               viewport={{ once: true, margin: "-40px" }}
-              whileHover={{ y: -6 }}
-              className={`glass-card p-8 md:p-10 transition-all duration-500 group cursor-default ${service.border} relative overflow-hidden`}
+              className={`glass-card glow-card p-8 md:p-10 transition-all duration-500 group cursor-default ${service.border} relative overflow-hidden`}
             >
               {/* Gradient overlay on hover */}
               <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
