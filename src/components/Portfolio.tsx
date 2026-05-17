@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, BarChart, Users, CheckCircle, Star } from "lucide-react";
+import { BarChart, Users, CheckCircle, Star } from "lucide-react";
 
 const projects = [
   {
@@ -107,11 +107,7 @@ const Portfolio = () => {
                   </div>
                 </div>
 
-                <div className="absolute top-4 right-4 sm:top-6 sm:right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <button className="w-10 h-10 sm:w-12 sm:h-12 bg-brand-violet/90 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 active:scale-95 transition-all">
-                    <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </button>
-                </div>
+
               </div>
 
               <div className="grid grid-cols-2 gap-4 mt-auto">
