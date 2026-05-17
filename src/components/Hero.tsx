@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
-import { ArrowRight, Sparkles, MousePointer, Check } from "lucide-react";
+import { ArrowRight, Rocket, Check } from "lucide-react";
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -88,14 +88,13 @@ const Hero = () => {
           </p>
 
           <div className="hero-reveal flex flex-col items-center gap-8 mb-16 sm:mb-24 w-full px-4 sm:px-0">
-            <div className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto">
-              <button className="btn-primary group">
-                <Sparkles className="w-5 h-5 text-amber-300 transition-transform group-hover:rotate-12" />
+            <div className="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto px-4 sm:px-0">
+              <button className="btn-primary group mx-auto sm:mx-0 min-w-[200px]">
+                <Rocket className="lucide-rocket" />
                 Lancer mon Prototype
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1.5" />
+                <ArrowRight className="lucide-arrow-right" />
               </button>
-              <button className="btn-secondary group">
-                <MousePointer className="w-4 h-4 text-brand-violet transition-transform group-hover:scale-110" />
+              <button className="btn-secondary group mx-auto sm:mx-0">
                 Voir nos Solutions
               </button>
             </div>

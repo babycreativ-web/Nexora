@@ -62,14 +62,14 @@ const Navbar = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-brand-violet transition-all duration-300 group-hover:w-full rounded-full" />
             </a>
           ))}
-          <a href="#contact" className="btn-primary py-3 px-6 text-xs uppercase tracking-widest">
+          <a href="#contact" className="btn-primary px-5 text-[12px]">
             Prototype Gratuit
           </a>
         </div>
 
         {/* Mobile Actions */}
         <div className="flex lg:hidden items-center gap-3 relative z-[110]">
-          <a href="#contact" className="px-4 py-2 bg-brand-violet text-white text-[10px] font-extrabold uppercase tracking-widest rounded-full shadow-lg">
+          <a href="#contact" className="btn-primary h-9 px-4 text-[11px] rounded-full shadow-lg">
             Gratuit
           </a>
           <button
@@ -126,18 +126,18 @@ const Navbar = () => {
               >
                 <a 
                   href="#contact"
-                  className="btn-primary w-full py-5 text-center font-bold text-lg flex items-center justify-center gap-3"
+                  className="btn-primary w-full"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Rocket className="w-5 h-5" />
+                  <Rocket className="w-5 h-5 flex-shrink-0" />
                   Prototype Gratuit
                 </a>
                 <a 
                   href="https://wa.me/yournumber"
-                  className="w-full py-5 rounded-2xl bg-white/5 border border-white/10 text-white font-bold text-lg flex items-center justify-center gap-3"
+                  className="btn-secondary w-full"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <MessageCircle className="w-5 h-5 text-[#25D366]" />
+                  <MessageCircle className="w-5 h-5 text-[#25D366] flex-shrink-0" />
                   WhatsApp Direct
                 </a>
               </motion.div>

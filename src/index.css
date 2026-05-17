@@ -66,25 +66,40 @@
     border-bottom: 1px solid rgba(255,255,255,0.04);
   }
 
+  /* --- Premium Button System (Refined & Compact) --- */
+  /* --- Luxury Tech Button System (Ultra-Compact) --- */
   .btn-primary {
-    @apply relative overflow-hidden px-10 py-5 rounded-2xl font-bold text-white transition-all duration-500 active:scale-95 flex items-center justify-center gap-3;
-    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
-    box-shadow: 0 10px 30px rgba(139,92,246,0.3), inset 0 1px 1px rgba(255,255,255,0.25);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    @apply h-10.5 px-6 inline-flex items-center justify-center gap-2.5 rounded-lg font-bold text-[13px] tracking-tight whitespace-nowrap transition-all duration-300 active:scale-95 text-white relative;
+    background: linear-gradient(to bottom, #8b5cf6, #7c3aed);
+    box-shadow: 
+      0 1px 2px rgba(0,0,0,0.2),
+      0 0 0 1px rgba(139,92,246,0.3),
+      inset 0 1px 0 rgba(255,255,255,0.15);
   }
   .btn-primary:hover {
-    @apply -translate-y-1 scale-[1.02] shadow-[0_20px_50px_rgba(139,92,246,0.4)];
-    background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+    @apply -translate-y-0.5 shadow-[0_8px_20px_rgba(139,92,246,0.25)];
+    background: #8b5cf6;
+  }
+  .btn-primary .lucide {
+    @apply w-4 h-4 transition-transform duration-300;
+  }
+  .btn-primary:hover .lucide-arrow-right {
+    @apply translate-x-1;
   }
 
   .btn-secondary {
-    @apply relative px-10 py-5 rounded-2xl font-bold text-white transition-all duration-500 active:scale-95 flex items-center justify-center gap-3;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
+    @apply h-10.5 px-6 inline-flex items-center justify-center gap-2.5 rounded-lg font-bold text-[13px] tracking-tight whitespace-nowrap transition-all duration-300 active:scale-95 text-slate-300 border border-white/5;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(4px);
   }
   .btn-secondary:hover {
-    @apply bg-white/[0.08] border-white/20 -translate-y-1 shadow-[0_15px_30px_rgba(0,0,0,0.3)];
+    @apply bg-white/[0.05] border-white/10 text-white -translate-y-0.5 shadow-lg;
+  }
+  .btn-secondary .lucide {
+    @apply w-3.5 h-3.5 transition-transform duration-300 opacity-60;
+  }
+  .btn-secondary:hover .lucide {
+    @apply scale-110 opacity-100;
   }
 
   .text-gradient {

@@ -175,10 +175,10 @@ const Pricing = () => {
 
               <button className={cn(
                 tier.highlighted ? "btn-primary" : "btn-secondary",
-                "w-full shadow-lg"
+                "w-full"
               )}>
                 {tier.cta}
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1.5" />
+                <ArrowRight className="w-5 h-5 lucide-arrow-right" />
               </button>
             </motion.div>
           ))}

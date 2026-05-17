@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Calendar, X, Sparkles, Check } from "lucide-react";
+import { MessageCircle, Calendar, X, Sparkles, Check, Rocket } from "lucide-react";
 import { useState } from "react";
 
 const ContactButtons = () => {
@@ -27,11 +27,11 @@ const ContactButtons = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5 }}
-        className="fixed bottom-6 right-6 z-[100] btn-primary rounded-full group py-4 px-8 shadow-2xl"
+        className="fixed bottom-6 right-6 z-[100] btn-primary rounded-full group px-6 shadow-2xl"
       >
-        <Sparkles className="w-5 h-5 text-amber-300 transition-transform group-hover:rotate-12" />
+        <Rocket className="w-4 h-4 transition-transform group-hover:scale-110" />
         <span className="hidden sm:block">Prototype gratuit</span>
-        <Calendar className="w-5 h-5 sm:hidden" />
+        <Calendar className="w-4 h-4 sm:hidden" />
       </motion.button>
 
       {/* Contact Modal */}
@@ -121,8 +121,8 @@ const ContactButtons = () => {
                       className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 text-white text-sm focus:outline-none focus:border-brand-violet/40 transition-all resize-none"
                     />
                   </div>
-                  <button className="btn-primary w-full mt-4 group">
-                    🚀 Demander mon prototype gratuit
+                  <button className="btn-primary w-full group">
+                    Obtenir mon prototype gratuit
                   </button>
                 </form>
                 
