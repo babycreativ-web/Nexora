@@ -1,142 +1,183 @@
 import { motion } from "framer-motion";
-import { Check, Info, Zap, Shield, Rocket } from "lucide-react";
+import { Check, ArrowRight, Zap, Rocket, Crown, MessageSquare } from "lucide-react";
 import { cn } from "../lib/utils";
 
 const pricingTiers = [
   {
-    name: "L'MVP EXPRESS",
-    time: "48-72 Heures",
-    price: "399€",
-    description: "Parfait pour valider une idée ou lancer un outil rapidement.",
+    name: "Starter",
+    price: "290€",
+    period: "projet unique",
+    description: "Idéal pour les indépendants et petites entreprises qui veulent une présence en ligne professionnelle et rapide.",
     icon: Zap,
     features: [
-      "Landing Page haute conversion",
-      "Optimisation mobile extrême",
-      "Ingénierie de vérification",
-      "Formulaire de contact & WA",
-      "SEO technique optimisé",
-      "Livraison ultra-rapide"
+      "Site vitrine 1 à 3 pages",
+      "Design responsive mobile",
+      "Formulaire de contact",
+      "Optimisation SEO de base",
+      "Intégration réseaux sociaux",
+      "Livraison en 3–5 jours",
     ],
-    cta: "Lancer mon MVP",
+    cta: "Demander un prototype",
     highlighted: false
   },
   {
-    name: "STUDIO PRO",
-    time: "2-3 Semaines",
-    price: "899€",
-    description: "Application web complète avec backend et design sur mesure.",
+    name: "Business",
+    price: "690€",
+    period: "projet unique",
+    description: "Pour les entreprises qui veulent une solution digitale complète avec des fonctionnalités avancées.",
     icon: Rocket,
     features: [
-      "Jusqu'à 8 pages premium",
-      "Système CMS personnalisé",
-      "Dashboard utilisateur",
-      "Animations GSAP d'élite",
-      "Vérification agentique continue",
-      "Support prioritaire 1-on-1"
+      "Site ou app jusqu'à 8 pages",
+      "Système de réservation en ligne",
+      "Tableau de bord personnalisé",
+      "Animations premium",
+      "Intégration CRM ou paiement",
+      "2 révisions incluses",
+      "Support 30 jours",
     ],
-    cta: "Réserver un appel",
+    cta: "Choisir Business",
     highlighted: true,
-    badge: "Plus Populaire"
+    badge: "Le plus populaire"
   },
   {
-    name: "ENTERPRISE BRIDGE",
-    time: "Sur Mesure",
-    price: "Sur Devis",
-    description: "Solutions complexes, IA custom et automatisations desktop.",
-    icon: Shield,
+    name: "Pro",
+    price: "1 290€",
+    period: "projet unique",
+    description: "Solutions complexes avec IA, automatisation et applications métier sur mesure pour des besoins spécifiques.",
+    icon: Crown,
     features: [
-      "Applications Web & Desktop",
-      "Intégrations IA (LLM/Agents)",
-      "Automatisations de processus",
-      "Audit de sécurité complet",
-      "Infrastructure scalable",
-      "Maintenance & Évolution"
+      "Application complète sur mesure",
+      "Intelligence artificielle intégrée",
+      "Automatisation des processus",
+      "Application desktop si nécessaire",
+      "Architecture scalable",
+      "Support prioritaire 60 jours",
+      "Maintenance & évolution",
     ],
-    cta: "Parler de votre projet",
+    cta: "Discuter du projet",
     highlighted: false
   }
 ];
 
 const Pricing = () => {
   return (
-    <section id="tarifs" className="py-24 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-violet/5 blur-[120px] -z-10" />
+    <section id="tarifs" className="py-20 md:py-28 relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-brand-violet/[0.04] blur-[150px] -z-10" />
 
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col items-center text-center mb-16">
-          <h2 className="text-sm font-bold tracking-widest text-brand-violet uppercase mb-4">Investissement</h2>
-          <h3 className="text-4xl md:text-5xl font-bold mb-6">Transparence & Vitesse de Mise sur le Marché</h3>
-          <p className="text-slate-400 max-w-2xl text-lg">
-            Nous ne vendons pas seulement du code, nous vendons de la vélocité. 
-            Choisissez le plan adapté à votre ambition.
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-center text-center mb-16"
+        >
+          <div className="section-label">
+            <span>Tarifs transparents</span>
+          </div>
+          <h2 className="section-title max-w-3xl">
+            Des prix clairs,{" "}
+            <span className="text-gradient">sans surprises</span>
+          </h2>
+          <p className="text-slate-400 max-w-2xl text-base md:text-lg leading-relaxed">
+            Trouvez la formule adaptée à votre besoin et votre budget. 
+            Chaque formule inclut un prototype gratuit pour que vous puissiez valider avant de vous engager.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
           {pricingTiers.map((tier, index) => (
             <motion.div
               key={tier.name}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
               viewport={{ once: true }}
+              whileHover={{ y: -6 }}
               className={cn(
-                "glass-card p-8 flex flex-col relative transition-all duration-500",
-                tier.highlighted ? "border-brand-violet shadow-[0_0_50px_rgba(139,92,246,0.15)] bg-white/[0.03] lg:scale-105 z-10" : "border-white/5 hover:border-white/10"
+                "glass-card p-7 md:p-9 flex flex-col relative transition-all duration-500",
+                tier.highlighted 
+                  ? "border-brand-violet/30 shadow-[0_0_60px_rgba(139,92,246,0.1)] bg-white/[0.03] lg:scale-[1.03] z-10" 
+                  : "border-white/[0.05] hover:border-white/10"
               )}
             >
               {tier.badge && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-brand-violet rounded-full text-[10px] font-black uppercase tracking-tighter text-white shadow-lg">
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-brand-violet to-brand-indigo rounded-full text-[10px] font-bold uppercase tracking-wider text-white shadow-lg">
                   {tier.badge}
                 </div>
               )}
               
               <div className="mb-8">
-                <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center">
-                        <tier.icon className="w-5 h-5 text-brand-violet" />
-                    </div>
-                    <h4 className="text-sm font-bold text-slate-200 uppercase tracking-widest">{tier.name}</h4>
+                <div className="flex items-center gap-3 mb-5">
+                  <div className={cn(
+                    "w-11 h-11 rounded-xl flex items-center justify-center",
+                    tier.highlighted ? "bg-brand-violet/20" : "bg-white/5"
+                  )}>
+                    <tier.icon className={cn("w-5 h-5", tier.highlighted ? "text-brand-violet" : "text-slate-400")} />
+                  </div>
+                  <h3 className="text-sm font-bold text-slate-200 uppercase tracking-widest font-display">{tier.name}</h3>
                 </div>
-                <div className="flex items-baseline gap-2">
-                    <span className="text-4xl md:text-5xl font-bold text-white">{tier.price}</span>
-                    {tier.price !== "Sur Devis" && <span className="text-slate-500 text-sm">HT</span>}
+                <div className="flex items-baseline gap-2 mb-1">
+                  <span className="text-4xl md:text-5xl font-bold text-white font-display">{tier.price}</span>
+                  <span className="text-slate-500 text-sm">HT</span>
                 </div>
-                <div className="mt-3 flex items-center gap-2 text-brand-cyan text-xs font-bold uppercase tracking-wide">
-                    <Zap className="w-3 h-3" />
-                    <span>Délai : {tier.time}</span>
-                </div>
-                <p className="mt-6 text-slate-400 text-sm leading-relaxed">{tier.description}</p>
+                <span className="text-xs text-slate-500">{tier.period}</span>
+                <p className="mt-5 text-slate-400 text-sm leading-relaxed">{tier.description}</p>
               </div>
 
-              <div className="flex-1 space-y-4 mb-10">
+              <div className="flex-1 space-y-3.5 mb-8">
                 {tier.features.map((feature) => (
-                  <div key={feature} className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-brand-violet/10 flex items-center justify-center shrink-0">
+                  <div key={feature} className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-brand-violet/10 flex items-center justify-center shrink-0 mt-0.5">
                       <Check className="w-3 h-3 text-brand-violet" />
                     </div>
-                    <span className="text-sm text-slate-300 font-medium">{feature}</span>
+                    <span className="text-sm text-slate-300">{feature}</span>
                   </div>
                 ))}
               </div>
 
               <button className={cn(
-                "w-full py-4 rounded-xl font-black uppercase tracking-widest text-xs transition-all",
+                "w-full py-4 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 group",
                 tier.highlighted 
-                  ? "bg-brand-violet text-white shadow-[0_0_30px_rgba(139,92,246,0.4)] hover:shadow-[0_0_40px_rgba(139,92,246,0.5)] hover:scale-[1.02] active:scale-95" 
-                  : "bg-white/5 text-white hover:bg-white/10 active:scale-95 border border-white/5"
+                  ? "bg-gradient-to-r from-brand-violet to-brand-indigo text-white shadow-[0_0_30px_rgba(139,92,246,0.3)] hover:shadow-[0_0_45px_rgba(139,92,246,0.45)] hover:scale-[1.02] active:scale-95" 
+                  : "bg-white/5 text-white hover:bg-white/10 active:scale-95 border border-white/[0.06]"
               )}>
                 {tier.cta}
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
             </motion.div>
           ))}
         </div>
 
-        <div className="mt-16 flex justify-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-obsidian-light border border-white/5 rounded-full text-[11px] text-slate-500 font-medium">
-                <Info className="w-4 h-4 text-brand-violet" />
-                <span>Tous nos prix sontHT. Support technique international inclus.</span>
+        {/* Custom quote */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-10 md:mt-12"
+        >
+          <div className="glass-card p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-brand-violet/[0.03] to-transparent">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-brand-violet/10 flex items-center justify-center shrink-0">
+                <MessageSquare className="w-6 h-6 text-brand-violet" />
+              </div>
+              <div>
+                <h4 className="font-bold text-white text-lg font-display">Besoin d'un projet sur mesure ?</h4>
+                <p className="text-slate-400 text-sm">Contactez-nous pour un devis personnalisé adapté à votre situation.</p>
+              </div>
             </div>
+            <a href="#contact" className="btn-secondary whitespace-nowrap px-6 py-3 text-sm font-bold shrink-0">
+              Demander un devis gratuit
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Trust note */}
+        <div className="mt-8 flex justify-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-emerald/5 border border-brand-emerald/10 rounded-full text-xs text-brand-emerald font-medium">
+            <Check className="w-3.5 h-3.5" />
+            <span>Prototype gratuit inclus — Payez uniquement après validation</span>
+          </div>
         </div>
       </div>
     </section>

@@ -1,73 +1,109 @@
 import { motion } from "framer-motion";
-import { PhoneCall, Layers, Code2, Globe } from "lucide-react";
+import { MessageSquare, Palette, Code2, Rocket, ArrowRight } from "lucide-react";
 
 const steps = [
   {
-    title: "Appel Stratégique",
-    description: "15 minutes pour comprendre vos goulots d'étranglement et définir vos objectifs de croissance.",
-    icon: PhoneCall,
-    color: "bg-blue-500/10 text-blue-400"
+    title: "Échange gratuit",
+    description: "On discute de votre projet pendant 15 minutes. Vous nous expliquez vos besoins, nous vous proposons la meilleure approche.",
+    icon: MessageSquare,
+    gradient: "from-blue-500 to-indigo-500",
+    highlight: "Gratuit, sans engagement"
   },
   {
-    title: "Architecture & IA",
-    description: "Nous concevons une solution sur mesure, intégrant design premium et intelligence agentique.",
-    icon: Layers,
-    color: "bg-brand-violet/10 text-brand-violet"
+    title: "Prototype offert",
+    description: "Nous créons un premier prototype fonctionnel de votre projet. Vous voyez le résultat concret avant tout paiement.",
+    icon: Palette,
+    gradient: "from-brand-violet to-purple-500",
+    highlight: "Vous testez avant de payer"
   },
   {
-    title: "Développement Accéléré",
-    description: "Notre pipeline agentique code 5x plus vite avec une vérification automatisée en temps réel.",
+    title: "Développement",
+    description: "Après validation du prototype, nous développons votre solution complète avec des points d'avancement réguliers.",
     icon: Code2,
-    color: "bg-brand-cyan/10 text-brand-cyan"
+    gradient: "from-brand-cyan to-blue-500",
+    highlight: "Suivi transparent"
   },
   {
-    title: "Livraison & Sécurité",
-    description: "Déploiement mondial (Edge), conformité RGPD et support international continu.",
-    icon: Globe,
-    color: "bg-green-500/10 text-green-400"
+    title: "Livraison & Support",
+    description: "Votre projet est livré, mis en ligne et nous restons disponibles pour les ajustements et le support technique.",
+    icon: Rocket,
+    gradient: "from-emerald-500 to-teal-500",
+    highlight: "2 révisions incluses"
   }
 ];
 
 const Process = () => {
   return (
-    <section className="py-24 bg-obsidian-light/20 relative">
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-brand-cyan/5 blur-[100px] -z-10" />
+    <section id="methode" className="py-20 md:py-28 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-obsidian via-obsidian-light/15 to-obsidian pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-cyan/5 blur-[120px] -z-10" />
 
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col items-center text-center mb-20">
-          <h2 className="text-sm font-black tracking-[0.3em] text-brand-violet uppercase mb-4">Notre Méthode</h2>
-          <h3 className="text-4xl md:text-5xl font-bold mb-6">Comment Nous Accélérons Votre Business</h3>
-          <p className="text-slate-400 max-w-2xl text-lg">
-            Un processus transparent, rigoureux et orienté vers une mise sur le marché ultra-rapide.
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-center text-center mb-16 md:mb-20"
+        >
+          <div className="section-label">
+            <span>Comment ça marche</span>
+          </div>
+          <h2 className="section-title max-w-3xl">
+            De l'idée au résultat en{" "}
+            <span className="text-gradient">4 étapes simples</span>
+          </h2>
+          <p className="text-slate-400 max-w-2xl text-base md:text-lg leading-relaxed">
+            Un processus clair et transparent. Pas de surprises, pas de jargon technique — juste des résultats.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative">
-            {/* Connecting line (Desktop) */}
-            <div className="hidden lg:block absolute top-[60px] left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent -z-10" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+          {/* Connecting line (Desktop) */}
+          <div className="hidden lg:block absolute top-[72px] left-[12%] right-[12%] h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
           {steps.map((step, index) => (
             <motion.div
               key={step.title}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.12 }}
               viewport={{ once: true }}
               className="flex flex-col items-center text-center group"
             >
-              <div className={`w-28 h-28 rounded-3xl ${step.color} border border-white/5 flex items-center justify-center mb-8 relative transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-xl`}>
-                <step.icon className="w-10 h-10" />
-                <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-obsidian border border-brand-violet/30 flex items-center justify-center font-black text-brand-violet text-sm">
-                    0{index + 1}
+              <div className="relative mb-8">
+                <div className={`w-24 h-24 md:w-28 md:h-28 rounded-3xl bg-gradient-to-br ${step.gradient} flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-xl opacity-90`}>
+                  <step.icon className="w-9 h-9 md:w-10 md:h-10 text-white" />
+                </div>
+                <div className="absolute -top-2 -right-2 w-9 h-9 rounded-full bg-obsidian border-2 border-brand-violet/40 flex items-center justify-center font-bold text-brand-violet text-sm font-display">
+                  {index + 1}
                 </div>
               </div>
-              <h4 className="text-xl font-bold mb-4 text-white group-hover:text-brand-violet transition-colors">{step.title}</h4>
-              <p className="text-slate-500 text-sm leading-relaxed max-w-[200px]">
+              <h3 className="text-lg md:text-xl font-bold mb-3 text-white group-hover:text-brand-violet transition-colors font-display">
+                {step.title}
+              </h3>
+              <p className="text-slate-500 text-sm leading-relaxed max-w-[220px] mb-4">
                 {step.description}
               </p>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-brand-cyan bg-brand-cyan/5 px-3 py-1 rounded-full border border-brand-cyan/10">
+                {step.highlight}
+              </span>
             </motion.div>
           ))}
         </div>
+
+        {/* CTA */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 md:mt-20 text-center"
+        >
+          <a href="#contact" className="btn-primary inline-flex items-center gap-3 py-4 px-8 text-base group">
+            Commencer maintenant
+            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </a>
+        </motion.div>
       </div>
     </section>
   );

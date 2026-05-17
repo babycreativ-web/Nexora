@@ -1,63 +1,88 @@
+import { motion } from "framer-motion";
+import { ArrowRight, Sparkles } from "lucide-react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Stats from "./components/Stats";
 import Services from "./components/Services";
+import TargetClients from "./components/TargetClients";
 import Portfolio from "./components/Portfolio";
-import Pricing from "./components/Pricing";
 import Process from "./components/Process";
+import Trust from "./components/Trust";
+import Pricing from "./components/Pricing";
 import Testimonials from "./components/Testimonials";
 import Verification from "./components/Verification";
 import About from "./components/About";
+import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
 import ContactButtons from "./components/ContactButtons";
 
 function App() {
   return (
-    <div className="min-h-screen bg-obsidian selection:bg-brand-violet/30 outline-none text-slate-200">
+    <div className="min-h-screen bg-obsidian text-slate-200">
       <Navbar />
       <main className="relative">
-        <div className="space-y-0 md:space-y-12"> {/* Balanced spacing */}
-          <Hero />
-          
-          <div className="relative">
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-brand-violet/[0.02] to-transparent pointer-events-none" />
-            <Stats />
-            <Verification /> {/* The Nexora Standard */}
-          </div>
+        {/* Hero & Stats */}
+        <Hero />
+        <Stats />
+        
+        {/* Divider */}
+        <div className="divider-gradient max-w-4xl mx-auto" />
 
-          <Services />
+        {/* Core Value Sections */}
+        <Services />
+        <TargetClients />
+        <Portfolio />
+        
+        {/* How it works */}
+        <div className="divider-gradient max-w-4xl mx-auto" />
+        <Process />
+        
+        {/* Trust & Quality */}
+        <Trust />
+        <Verification />
+        
+        {/* Pricing */}
+        <div className="divider-gradient max-w-4xl mx-auto" />
+        <Pricing />
+        
+        {/* Social Proof */}
+        <Testimonials />
+        
+        {/* About */}
+        <About />
+        
+        {/* FAQ */}
+        <FAQ />
+        
+        {/* Final CTA */}
+        <section className="py-24 md:py-32 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-obsidian via-brand-violet/[0.04] to-obsidian pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-brand-violet/10 blur-[150px] rounded-full pointer-events-none" />
           
-          <About />
-
-          <Portfolio />
-          
-          <Process />
-          
-          <Pricing />
-          
-          <Testimonials />
-          
-          {/* Final Emotional CTA */}
-          <section className="py-32 bg-brand-violet/[0.03] border-y border-brand-violet/10 relative overflow-hidden">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand-violet/10 blur-[120px] rounded-full pointer-events-none" />
-            <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-              <h2 className="text-4xl md:text-7xl font-bold mb-10 leading-tight italic">
-                Prêt à moderniser votre <br /> <span className="text-gradient">présence digitale ?</span>
-              </h2>
-              <p className="text-slate-400 text-xl mb-16 max-w-3xl mx-auto leading-relaxed">
-                Créons ensemble un site moderne qui donne réellement confiance à vos clients et automatise votre croissance.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <button className="btn-primary py-5 px-12 text-lg font-black uppercase tracking-widest shadow-[0_0_50px_rgba(139,92,246,0.3)] hover:scale-105 transition-transform">
-                  Réserver mon appel gratuit
-                </button>
-                <button className="btn-secondary py-5 px-12 text-lg font-black uppercase tracking-widest hover:bg-white/10">
-                  Découvrir nos Études de Cas
-                </button>
-              </div>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="max-w-4xl mx-auto px-6 text-center relative z-10"
+          >
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-[1.1]">
+              Prêt à donner un nouvel élan à{" "}
+              <span className="text-gradient">votre activité ?</span>
+            </h2>
+            <p className="text-slate-400 text-base md:text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
+              Décrivez-nous votre projet et recevez un prototype fonctionnel en moins de 48h. 
+              Gratuit, sans engagement — vous ne payez que si le résultat vous convainc.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a href="#contact" className="btn-primary py-5 px-10 text-base font-bold flex items-center gap-3 group shadow-[0_0_50px_rgba(139,92,246,0.25)]">
+                <Sparkles className="w-5 h-5" />
+                Demander un prototype gratuit
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </a>
             </div>
-          </section>
-        </div>
+          </motion.div>
+        </section>
       </main>
       <Footer />
       <ContactButtons />
