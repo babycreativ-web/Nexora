@@ -27,11 +27,11 @@ const ContactButtons = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5 }}
-        className="fixed bottom-6 right-6 z-[100] btn-primary rounded-full py-3.5 px-6 flex items-center gap-2.5 shadow-[0_4px_30px_rgba(139,92,246,0.3)] hover:shadow-[0_6px_40px_rgba(139,92,246,0.45)] text-sm font-bold"
+        className="fixed bottom-6 right-6 z-[100] btn-primary rounded-full group py-4 px-8 shadow-2xl"
       >
-        <Sparkles className="w-4 h-4" />
+        <Sparkles className="w-5 h-5 text-amber-300 transition-transform group-hover:rotate-12" />
         <span className="hidden sm:block">Prototype gratuit</span>
-        <Calendar className="w-4 h-4 sm:hidden" />
+        <Calendar className="w-5 h-5 sm:hidden" />
       </motion.button>
 
       {/* Contact Modal */}
@@ -121,8 +121,8 @@ const ContactButtons = () => {
                       className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 text-white text-sm focus:outline-none focus:border-brand-violet/40 transition-all resize-none"
                     />
                   </div>
-                  <button className="btn-primary w-full py-5 text-base shadow-[0_0_50px_rgba(139,92,246,0.2)] mt-4">
-                    Demander mon prototype gratuit
+                  <button className="btn-primary w-full mt-4 group">
+                    🚀 Demander mon prototype gratuit
                   </button>
                 </form>
                 

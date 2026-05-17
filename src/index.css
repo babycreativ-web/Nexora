@@ -67,35 +67,24 @@
   }
 
   .btn-primary {
-    @apply relative overflow-hidden px-8 py-5 rounded-2xl font-bold text-white transition-all active:scale-95;
+    @apply relative overflow-hidden px-10 py-5 rounded-2xl font-bold text-white transition-all duration-500 active:scale-95 flex items-center justify-center gap-3;
     background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
-    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(139, 92, 246, 0.4);
+    box-shadow: 0 10px 30px rgba(139,92,246,0.3), inset 0 1px 1px rgba(255,255,255,0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
   .btn-primary:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 20px 50px rgba(139, 92, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  }
-  .btn-primary::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
-    border-radius: inherit;
-    transition: opacity 0.3s;
+    @apply -translate-y-1 scale-[1.02] shadow-[0_20px_50px_rgba(139,92,246,0.4)];
+    background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
   }
 
   .btn-secondary {
-    @apply px-8 py-5 rounded-2xl font-bold text-white transition-all active:scale-95 flex items-center justify-center gap-2;
-    background: rgba(255, 255, 255, 0.04);
+    @apply relative px-10 py-5 rounded-2xl font-bold text-white transition-all duration-500 active:scale-95 flex items-center justify-center gap-3;
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
   }
   .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    @apply bg-white/[0.08] border-white/20 -translate-y-1 shadow-[0_15px_30px_rgba(0,0,0,0.3)];
   }
 
   .text-gradient {
@@ -160,6 +149,45 @@
   }
   .font-display {
     font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  /* Mobile optimization utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .mobile-safe-pt {
+    @apply pt-[max(5rem,env(safe-area-inset-top))];
+  }
+  
+  .mobile-safe-pb {
+    @apply pb-[max(5rem,env(safe-area-inset-bottom))];
+  }
+  
+  .responsive-container {
+    @apply px-5 sm:px-8 md:px-12 lg:px-20 max-w-[1440px] mx-auto w-full;
+  }
+  
+  .section-spacing {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+}
+
+/* Fluid typography and spacing */
+@layer base {
+  h1 {
+    @apply text-balance;
+    font-size: clamp(2.5rem, 8vw + 1rem, 6.5rem);
+  }
+  
+  h2 {
+    @apply text-balance;
+    font-size: clamp(2rem, 5vw + 1rem, 4rem);
+  }
+  
+  p {
+    @apply text-pretty;
+    font-size: clamp(0.9375rem, 0.5vw + 0.8rem, 1.125rem);
   }
 }
 

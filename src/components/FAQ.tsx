@@ -41,30 +41,30 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-20 md:py-28 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-obsidian via-obsidian-light/10 to-obsidian pointer-events-none" />
+    <section id="faq" className="section-spacing relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-obsidian via-brand-violet/[0.01] to-obsidian pointer-events-none" />
       
-      <div className="max-w-4xl mx-auto px-6 relative z-10">
+      <div className="responsive-container relative z-10 max-w-4xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col items-center text-center mb-14"
+          className="flex flex-col items-center text-center mb-12 sm:mb-16"
         >
           <div className="section-label">
             <span>Questions fréquentes</span>
           </div>
-          <h2 className="section-title max-w-2xl">
+          <h2 className="section-title max-w-2xl text-balance">
             Vos questions,{" "}
             <span className="text-gradient">nos réponses</span>
           </h2>
-          <p className="text-slate-400 max-w-xl text-base md:text-lg leading-relaxed">
-            Tout ce que vous devez savoir avant de démarrer votre projet avec nous.
+          <p className="text-slate-400 max-w-xl text-pretty">
+            Tout ce que vous devez savoir avant de propulser votre activité.
           </p>
         </motion.div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
@@ -72,21 +72,19 @@ const FAQ = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
               viewport={{ once: true }}
-              className="glass-card overflow-hidden"
+              className={`glass-card overflow-hidden transition-all duration-300 ${openIndex === index ? "border-brand-violet/30 bg-white/[0.04]" : "border-white/[0.06] hover:border-white/20"}`}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center justify-between p-5 md:p-6 text-left group"
+                className="w-full flex items-center justify-between p-6 sm:p-7 text-left group active:bg-white/[0.02]"
                 aria-expanded={openIndex === index}
               >
-                <span className="text-sm md:text-base font-semibold text-white pr-4 group-hover:text-brand-violet transition-colors">
+                <span className={`text-[15px] sm:text-[17px] font-bold pr-6 transition-colors font-display leading-tight ${openIndex === index ? "text-white" : "text-slate-300 group-hover:text-white"}`}>
                   {faq.question}
                 </span>
-                <ChevronDown 
-                  className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300 ${
-                    openIndex === index ? "rotate-180 text-brand-violet" : ""
-                  }`} 
-                />
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 border transition-all duration-300 ${openIndex === index ? "bg-brand-violet/20 border-brand-violet/40 rotate-180" : "bg-white/5 border-white/10"}`}>
+                  <ChevronDown className={`w-4 h-4 transition-colors ${openIndex === index ? "text-brand-violet" : "text-slate-500"}`} />
+                </div>
               </button>
               <AnimatePresence initial={false}>
                 {openIndex === index && (
@@ -94,12 +92,12 @@ const FAQ = () => {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
                     className="overflow-hidden"
                   >
-                    <div className="px-5 md:px-6 pb-5 md:pb-6">
-                      <div className="h-px bg-white/5 mb-4" />
-                      <p className="text-slate-400 text-sm leading-relaxed">
+                    <div className="px-6 sm:px-7 pb-6 sm:pb-7">
+                      <div className="h-px bg-white/10 mb-6" />
+                      <p className="text-slate-400 text-sm sm:text-[15px] leading-relaxed max-w-3xl text-pretty font-medium">
                         {faq.answer}
                       </p>
                     </div>

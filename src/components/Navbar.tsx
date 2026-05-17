@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Rocket } from "lucide-react";
+import { Menu, X, Rocket, ArrowRight, MessageCircle } from "lucide-react";
 import { cn } from "../lib/utils";
 
 const Navbar = () => {
@@ -9,7 +9,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -27,97 +27,127 @@ const Navbar = () => {
   const navLinks = [
     { name: "Services", href: "#services" },
     { name: "Réalisations", href: "#projets" },
-    { name: "Comment ça marche", href: "#methode" },
+    { name: "Méthode", href: "#methode" },
     { name: "Tarifs", href: "#tarifs" },
-    { name: "FAQ", href: "#faq" },
   ];
 
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-4 sm:px-6",
+        "fixed top-0 left-0 right-0 z-[100] transition-all duration-500",
         isScrolled 
-          ? "bg-obsidian/80 backdrop-blur-2xl border-b border-white/[0.04] py-3" 
-          : "bg-transparent py-5"
+          ? "bg-obsidian/80 backdrop-blur-xl border-b border-white/[0.04] py-3" 
+          : "bg-transparent py-6"
       )}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2.5 group">
-          <div className="w-9 h-9 bg-gradient-to-br from-brand-violet to-brand-indigo rounded-xl flex items-center justify-center transition-all group-hover:rotate-6 group-hover:scale-105 shadow-[0_0_20px_rgba(139,92,246,0.25)]">
-            <Rocket className="text-white w-5 h-5" />
+      <div className="responsive-container flex items-center justify-between">
+        <a href="#" className="flex items-center gap-2.5 group relative z-[110]">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-brand-violet to-brand-indigo rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(139,92,246,0.3)]">
+            <Rocket className="text-white w-5 h-5 sm:w-6 sm:h-6" />
           </div>
-          <span className="text-lg font-bold tracking-tight text-white font-display">
-            Nexora<span className="text-brand-violet">Studio</span>
+          <span className="text-lg sm:text-xl font-bold tracking-tight text-white font-display">
+            Nexora<span className="text-brand-violet">.</span>
           </span>
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-10">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-[13px] font-medium text-slate-400 hover:text-white transition-colors relative group"
+              className="text-[13px] font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-all relative group"
             >
               {link.name}
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-brand-violet transition-all duration-300 group-hover:w-full rounded-full" />
             </a>
           ))}
-          <a href="#contact" className="bg-gradient-to-r from-brand-violet to-brand-indigo px-5 py-2.5 rounded-xl text-sm font-bold text-white shadow-[0_0_20px_rgba(139,92,246,0.2)] hover:shadow-[0_0_30px_rgba(139,92,246,0.35)] hover:scale-105 active:scale-95 transition-all">
-            Prototype gratuit
+          <a href="#contact" className="btn-primary py-3 px-6 text-xs uppercase tracking-widest">
+            Prototype Gratuit
           </a>
         </div>
 
-        {/* Mobile Toggle */}
-        <button
-          className="lg:hidden text-white w-10 h-10 flex items-center justify-center bg-white/5 rounded-xl border border-white/10"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Menu navigation"
-        >
-          {isMobileMenuOpen ? <X className="w-5 h-5 text-brand-violet" /> : <Menu className="w-5 h-5" />}
-        </button>
+        {/* Mobile Actions */}
+        <div className="flex lg:hidden items-center gap-3 relative z-[110]">
+          <a href="#contact" className="px-4 py-2 bg-brand-violet text-white text-[10px] font-extrabold uppercase tracking-widest rounded-full shadow-lg">
+            Gratuit
+          </a>
+          <button
+            className="w-11 h-11 flex items-center justify-center bg-white/5 rounded-2xl border border-white/10 active:scale-90 transition-transform"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6 text-brand-violet animate-in fade-in spin-in-90 duration-300" />
+            ) : (
+              <Menu className="w-6 h-6 text-white" />
+            )}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Modern Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-obsidian/60 backdrop-blur-sm lg:hidden z-40"
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
-            <motion.div
-              initial={{ opacity: 0, y: -10, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.98 }}
-              transition={{ type: "spring", damping: 25 }}
-              className="absolute top-full left-4 right-4 bg-obsidian-light/95 backdrop-blur-2xl border border-white/10 p-8 rounded-2xl lg:hidden shadow-2xl mt-3 z-50"
-            >
-              <div className="flex flex-col gap-5">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className="text-lg font-medium text-slate-300 hover:text-brand-violet transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.name}
-                  </a>
-                ))}
-                <div className="h-px bg-white/5 my-2" />
-                <a 
-                  href="#contact"
-                  className="btn-primary w-full py-4 text-center font-bold text-sm"
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 30, stiffness: 300 }}
+            className="fixed inset-0 bg-obsidian z-[105] lg:hidden flex flex-col p-6 pt-28"
+          >
+            {/* Background Accent */}
+            <div className="absolute top-1/4 -right-20 w-80 h-80 bg-brand-violet/10 blur-[100px] rounded-full" />
+            
+            <div className="flex flex-col gap-8 relative z-10">
+              <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-600 mb-2">Navigation</p>
+              {navLinks.map((link, i) => (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 + i * 0.1 }}
+                  className="text-4xl font-bold text-white font-display hover:text-brand-violet transition-colors flex items-center justify-between group"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Demander un prototype gratuit
+                  {link.name}
+                  <ArrowRight className="w-8 h-8 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-brand-violet" />
+                </motion.a>
+              ))}
+              
+              <div className="h-px bg-white/5 my-6" />
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="space-y-4"
+              >
+                <a 
+                  href="#contact"
+                  className="btn-primary w-full py-5 text-center font-bold text-lg flex items-center justify-center gap-3"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <Rocket className="w-5 h-5" />
+                  Prototype Gratuit
                 </a>
-              </div>
-            </motion.div>
-          </>
+                <a 
+                  href="https://wa.me/yournumber"
+                  className="w-full py-5 rounded-2xl bg-white/5 border border-white/10 text-white font-bold text-lg flex items-center justify-center gap-3"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <MessageCircle className="w-5 h-5 text-[#25D366]" />
+                  WhatsApp Direct
+                </a>
+              </motion.div>
+            </div>
+            
+            <div className="mt-auto pb-10 relative z-10 text-center">
+              <p className="text-slate-500 text-sm">Prêt à transformer votre business ?</p>
+              <p className="text-brand-violet font-bold text-xs uppercase tracking-widest mt-2">Disponibilité : Immédiate</p>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </nav>
